@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - CONFIG_PATH=./config/local.yaml
+      - REDIS_ADDR=redis:6379 
+    depends_on:
+      - redis
+    volumes:
+      - ./storage:/app/storage
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    restart: always
