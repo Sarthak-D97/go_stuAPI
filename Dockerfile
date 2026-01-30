@@ -29,7 +29,6 @@ COPY --from=builder /app/main .
 # Copy your config file (adjust path if your MustLoad looks elsewhere)
 COPY config/local.yaml ./config/local.yaml
 
-# Expose the port your server runs on
 EXPOSE 8080
 
 CMD ["./main"]
